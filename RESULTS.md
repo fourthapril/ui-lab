@@ -50,6 +50,7 @@ Tool parts that I chose: Part 1 - Selenium IDE and Part 4 - Cypress
 - Step 4.4, QP-01 steps 1 and 2: waits for the QuickPizza heading, opens Advanced and waits for all four advanced fields
 - Step 4.5, QP-01 steps 3 to 5: fills 600 calories, excludes Knife, checks vegetarian and custom name, then verifies the response and the unauthenticated rating message
 - Step 4.6, request oracle: `cy.intercept('POST', '/api/pizza')` waits for status 200, checks the request limit, compares the response tool and calories with the page, and stores the tool for Step 7
+- Step 4.7, reusable command: `cy.adminLogin('admin', 'admin')` waits for the Svelte announcer, clears both prefilled fields, submits the form and checks the admin list
 - Step 4.3, intentional wrong-title failure: Cypress timed out while the title assertion expected `Web form` but the page showed `Web Form`; the assertion was restored before the successful run.
 - Step 4.6, intercepted `/api/pizza` response: tool `Pizza cutter`, 425 calories per slice, status 200, and the request carried `maxCaloriesPerSlice: 600`.
 - Step 4.7, admin-list line: `Lab Pizza 20261119-101743 (tool=Pizza cutter, ingredients_number=6) (newest)`.
