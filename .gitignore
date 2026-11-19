@@ -1,11 +1,11 @@
-# Libraries and build output of the tools
+# ไลบรารีและไฟล์ผลลัพธ์จากการ build ของเครื่องมือ
 target/
 .venv/
 node_modules/
 __pycache__/
 cypress/cypress/downloads/
 
-# Files that macOS and editors add
+# ไฟล์ที่ macOS และโปรแกรมแก้ไขโค้ดสร้างเพิ่ม
 .DS_Store
 .idea/
 .vscode/

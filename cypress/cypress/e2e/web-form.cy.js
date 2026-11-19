@@ -1,6 +1,6 @@
-// Goal: fill in every kind of field on Selenium's web form and check the result.
+// เป้าหมาย: กรอกช่องทุกชนิดในเว็บฟอร์มของ Selenium และตรวจสอบผลลัพธ์
 describe('Web form', () => {
-  it('fills in the fields and sends the form', () => {
+  it('กรอกข้อมูลทุกช่องและส่งฟอร์ม', () => {
     cy.visit('https://www.selenium.dev/selenium/web/web-form.html')
     cy.title().should('eq', 'Web form')
     cy.get('#my-text-id').type('Cypress').should('have.value', 'Cypress')

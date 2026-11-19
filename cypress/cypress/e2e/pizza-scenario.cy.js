@@ -1,8 +1,8 @@
-// Goal: QP-01 verifies that restrictions survive a pizza request, rating needs login,
-// and the admin list shows the same tool for the new pizza.
+// เป้าหมาย: QP-01 ตรวจสอบว่าเงื่อนไขยังคงอยู่หลังขอพิซซ่า การให้คะแนนต้องล็อกอิน
+// และรายการแอดมินแสดงอุปกรณ์เดียวกับพิซซ่าที่สร้างใหม่
 function stamp() { const d = new Date(); const two = n => String(n).padStart(2, '0'); return d.getFullYear() + two(d.getMonth() + 1) + two(d.getDate()) + '-' + two(d.getHours()) + two(d.getMinutes()) + two(d.getSeconds()) }
-describe('QP-01 A custom pizza reaches the admin list', () => {
-  it('follows the steps of QP-01', () => {
+describe('QP-01 พิซซ่ากำหนดเองปรากฏในรายการแอดมิน', () => {
+  it('ทำตามขั้นตอนของ QP-01', () => {
     const pizzaName = 'Lab Pizza ' + stamp()
     cy.visit('https://quickpizza.grafana.com')
     cy.get('h1').should('have.text', 'Looking to break out of your pizza routine?')

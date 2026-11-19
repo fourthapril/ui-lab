@@ -5,7 +5,7 @@
   "url": "https://quickpizza.grafana.com",
   "tests": [{
     "id": "f580ec1d-8f77-43f7-9dd4-0cc57e166d96",
-    "name": "web form",
+    "name": "เว็บฟอร์ม",
     "commands": [{
       "id": "4c867507-b57e-4f64-a8ac-4ae8e5fcbe72",
       "comment": "",
@@ -89,7 +89,7 @@
     }]
   }, {
     "id": "ef0c6cd1-7775-448d-8d71-7a122f4a03af",
-    "name": "QP-01 customer",
+    "name": "ลูกค้า QP-01",
     "commands": [{
       "id": "fcc362c5-aea7-4d6e-be4d-493a47d778da",
       "comment": "",
@@ -315,7 +315,7 @@
   }],
   "suites": [{
     "id": "fb7bbb69-fc2a-4592-ad35-40ccd8edcac5",
-    "name": "Default Suite",
+    "name": "ชุดทดสอบหลัก",
     "persistSession": false,
     "parallel": false,
     "timeout": 300,

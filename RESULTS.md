@@ -1,70 +1,72 @@
-# UI lab results
+# ผลการทำ UI lab
 
-Tool parts that I chose: Part 1 - Selenium IDE and Part 4 - Cypress
+เครื่องมือที่เลือกทำ: Part 1 - Selenium IDE และ Part 4 - Cypress
 
 ## Part 0
 
-- Step 0.1, Chrome version: Google Chrome 158.0.8127.36 (Official Build) (64-bit)
-- Step 0.2, ChromeDriver: downloaded outside the repository under `C:\drivers` so the driver binary is not committed with the lab
-- Step 0.3, ChromeDriver version: 158.0.8127.36, matching the Chrome major version
-- Step 0.3, environment variable: `CHROMEDRIVER` points to the driver outside the repository and is added to `PATH` only when running Selenium IDE
-- Step 0.4, locator of Pizza, Please!: `name=pizza-please`
-- Step 0.4, locator of Excluded tools: `css=select`
-- Step 0.4, locator of Must be vegetarian: `id=default-checkbox`
-- Step 0.4, locator of Custom Pizza Name: `css=input#pizza-name`
-- Step 0.4, locator note: `#floating_filled` is reused by three number inputs, so the calories input is located from its label instead of the duplicated id
-- Step 0.5, pizza name, tool and calories of the run by hand: `Lab Pizza 20261119-091205`, `Scissors`, 525 calories per slice
-- Step 0.5, manual run note: the pizza name includes the date and time so repeated runs do not collide with an earlier pizza
+- ขั้นตอน 0.1 เวอร์ชัน Chrome: Google Chrome 158.0.8127.36 (Official Build) (64-bit)
+- ขั้นตอน 0.2 ChromeDriver: ดาวน์โหลดไว้นอกรีโพสิตอรี่ที่ `C:\drivers` เพื่อไม่ commit ไฟล์ไดรเวอร์ไว้ในแล็บ
+- ขั้นตอน 0.3 เวอร์ชัน ChromeDriver: 158.0.8127.36 ซึ่งตรงกับเวอร์ชันหลักของ Chrome
+- ขั้นตอน 0.3 ตัวแปรสภาพแวดล้อม: `CHROMEDRIVER` ชี้ไปยังไดรเวอร์นอกรีโพสิตอรี่ และเพิ่มไดเรกทอรีของไดรเวอร์เข้า `PATH` เฉพาะตอนรัน Selenium IDE
+- ขั้นตอน 0.4 locator ของปุ่ม Pizza, Please!: `name=pizza-please`
+- ขั้นตอน 0.4 locator ของ Excluded tools: `css=select`
+- ขั้นตอน 0.4 locator ของ Must be vegetarian: `id=default-checkbox`
+- ขั้นตอน 0.4 locator ของ Custom Pizza Name: `css=input#pizza-name`
+- ขั้นตอน 0.4 หมายเหตุเรื่อง locator: `#floating_filled` ถูกใช้ซ้ำกับช่องตัวเลข 3 ช่อง จึงค้นหาช่อง calories จาก label แทนการใช้ id ที่ซ้ำกัน
+- ขั้นตอน 0.5 ชื่อพิซซ่า อุปกรณ์ และ calories จากการทดสอบด้วยมือ: `Lab Pizza 20261119-091205`, `Scissors`, 525 calories ต่อชิ้น
+- ขั้นตอน 0.5 หมายเหตุการทดสอบด้วยมือ: ชื่อพิซซ่ามีวันที่และเวลาเพื่อไม่ให้ชนกับพิซซ่าจากการรันครั้งก่อน
 
-| Step | Actual result | Pass or fail |
+| ขั้นตอน | ผลลัพธ์ที่ได้จริง | ผลการทดสอบ |
 |------|---------------|--------------|
-| 1 | The heading read `Looking to break out of your pizza routine?` | Pass |
-| 2 | Advanced showed Max Calories per Slice, Excluded tools, Must be vegetarian and Custom Pizza Name | Pass |
-| 3 | Entered 600, selected Knife, checked vegetarian and entered the timestamped pizza name | Pass |
-| 4 | The answer showed the pizza name, returned `Scissors`, and 525 calories per slice | Pass |
-| 5 | Clicking Love it! without logging in showed `Please log in first.` | Pass |
-| 6 | The admin page showed `Latest pizza recommendations` after signing in as admin/admin | Pass |
-| 7 | The admin list contained the pizza name and the same tool, `Scissors` | Pass |
+| 1 | หัวข้อแสดง `Looking to break out of your pizza routine?` | ผ่าน |
+| 2 | Advanced แสดง Max Calories per Slice, Excluded tools, Must be vegetarian และ Custom Pizza Name | ผ่าน |
+| 3 | กรอก 600 เลือก Knife ติ๊ก vegetarian และกรอกชื่อพิซซ่าที่มี timestamp | ผ่าน |
+| 4 | คำตอบแสดงชื่อพิซซ่า ได้ `Scissors` และ 525 calories ต่อชิ้น | ผ่าน |
+| 5 | เมื่อกด Love it! โดยยังไม่ล็อกอิน แสดง `Please log in first.` | ผ่าน |
+| 6 | หน้าแอดมินแสดง `Latest pizza recommendations` หลังล็อกอินด้วย admin/admin | ผ่าน |
+| 7 | รายการแอดมินมีชื่อพิซซ่าและอุปกรณ์เดียวกันคือ `Scissors` | ผ่าน |
 
 ## Part 1: Selenium IDE
 
-- Firefox version and Node.js version: Firefox 159.0.1; Node.js v24.22.1
-- Step 1.1, Selenium IDE version: 3.17.4
-- Step 1.3, runner command: `npx --yes selenium-side-runner@4.0.13 ui-lab.side`; the web-form test completed successfully
-- Step 1.4, the failed check: `Actual value 'Received!' did not match 'Received' during assertText:id=message:Received`; `Tests: 1 failed, 1 passed, 2 total`.
-- Step 1.4, restored check: the assertion was changed back to `Received!`, and the final web-form run passed
-- Step 1.5, target chosen for Submit: `xpath=//button[@type='submit']`; the recorded `css=.btn` was fragile because a class can be shared by several buttons.
-- Step 1.5, target verification: the stable XPath was used in `ui-lab.side` instead of the recorded class selector
-- Step 1.6, changes after recording: used full URLs, replaced the Submit target, added waits and assertions, removed the redundant option click, and added the complete QP-01 customer flow.
-- Step 1.6, pizza names: run 1 `Lab Pizza 20261119-093744`; run 2 `Lab Pizza 20261119-094118`.
-- Step 1.6, both runs: `Tests: 2 passed, 2 total`.
-- Step 1.6, QP-01 checks: the project waits for the advanced fields and recommendation, verifies the name, excludes Knife, checks calories, verifies the unauthenticated rating message, and keeps the timestamped pizza name for the admin step
-- Step 1.7, line that needs rewriting: the exported Java assertion that compares against the literal `vars.get("pizzaName").toString()`; it must use the variable value instead of a quoted expression.
+- เวอร์ชัน Firefox และ Node.js: Firefox 159.0.1; Node.js v24.22.1
+- ขั้นตอน 1.1 เวอร์ชัน Selenium IDE: 3.17.4
+- ขั้นตอน 1.3 คำสั่งรัน: `npx --yes selenium-side-runner@4.0.13 ui-lab.side`; การทดสอบเว็บฟอร์มทำงานสำเร็จ
+- ขั้นตอน 1.4 การตรวจสอบที่ทำให้ล้มเหลว: `Actual value 'Received!' did not match 'Received' during assertText:id=message:Received`; `Tests: 1 failed, 1 passed, 2 total`
+- ขั้นตอน 1.4 การตรวจสอบหลังแก้ไข: เปลี่ยน assertion กลับเป็น `Received!` แล้วการรันเว็บฟอร์มครั้งสุดท้ายผ่าน
+- ขั้นตอน 1.5 target ที่เลือกสำหรับ Submit: `xpath=//button[@type='submit']`; `css=.btn` ที่บันทึกไว้เดิมเปราะบาง เพราะหลายปุ่มอาจใช้ class เดียวกัน
+- ขั้นตอน 1.5 การตรวจสอบ target: ใช้ XPath ที่เสถียรใน `ui-lab.side` แทนตัวเลือก class ที่บันทึกไว้
+- ขั้นตอน 1.6 การแก้ไขหลังบันทึก: ใช้ URL แบบเต็ม เปลี่ยน target ของ Submit เพิ่มการรอและ assertion ลบการคลิกตัวเลือกที่ซ้ำ และเพิ่มขั้นตอนลูกค้า QP-01 ครบถ้วน
+- ขั้นตอน 1.6 ชื่อพิซซ่า: รอบที่ 1 `Lab Pizza 20261119-093744`; รอบที่ 2 `Lab Pizza 20261119-094118`
+- ขั้นตอน 1.6 ผลการรันทั้งสองรอบ: `Tests: 2 passed, 2 total`
+- ขั้นตอน 1.6 การตรวจสอบ QP-01: โปรเจกต์รอช่อง Advanced และคำแนะนำพิซซ่า ตรวจสอบชื่อ ไม่เลือก Knife ตรวจสอบ calories ตรวจสอบข้อความการให้คะแนนโดยยังไม่ล็อกอิน และเก็บชื่อพิซซ่าที่มี timestamp ไว้ใช้ในขั้นตอนแอดมิน
+- ขั้นตอน 1.7 บรรทัดที่ต้องเขียนใหม่: assertion ในไฟล์ Java ที่ export ซึ่งนำ `vars.get("pizzaName").toString()` ไปเปรียบเทียบเป็นข้อความตามตัวอักษร ต้องแก้ให้ใช้ค่าของตัวแปรจริงแทนข้อความที่ใส่เครื่องหมายคำพูด
 
 ## Part 4: Cypress
 
 - Node.js: `v24.22.1`; npm: `11.19.1`; Cypress: `16.2.1`
-- Step 4.1, Cypress project: `package.json` and `package-lock.json` pin Cypress `16.2.1`
-- Step 4.2, Cypress configuration: Chrome E2E testing uses a 1280 x 1600 viewport, a 10-second command timeout and video recording
-- Step 4.3, web-form spec: fills text, password, textarea, select, checkbox and radio controls, submits the form and checks `Received!`
-- Step 4.4, QP-01 steps 1 and 2: waits for the QuickPizza heading, opens Advanced and waits for all four advanced fields
-- Step 4.5, QP-01 steps 3 to 5: fills 600 calories, excludes Knife, checks vegetarian and custom name, then verifies the response and the unauthenticated rating message
-- Step 4.6, request oracle: `cy.intercept('POST', '/api/pizza')` waits for status 200, checks the request limit, compares the response tool and calories with the page, and stores the tool for Step 7
-- Step 4.7, reusable command: `cy.adminLogin('admin', 'admin')` waits for the Svelte announcer, clears both prefilled fields, submits the form and checks the admin list
-- Step 4.8, evidence: screenshots are saved after steps 4, 5 and 7, and videos are enabled for both specs; the recorded full runs passed twice
-- Step 4.3, intentional wrong-title failure: Cypress timed out while the title assertion expected `Web form` but the page showed `Web Form`; the assertion was restored before the successful run.
-- Step 4.6, intercepted `/api/pizza` response: tool `Pizza cutter`, 425 calories per slice, status 200, and the request carried `maxCaloriesPerSlice: 600`.
-- Step 4.7, admin-list line: `Lab Pizza 20261119-101743 (tool=Pizza cutter, ingredients_number=6) (newest)`.
-- Step 4.8, run 1: PASS, 2 specs and 2 tests, 12 seconds total; pizza `Lab Pizza 20261119-100840`.
-- Step 4.8, run 2: PASS, 2 specs and 2 tests, 12 seconds total; pizza `Lab Pizza 20261119-101743`.
-- Step 4.9 (optional): Not run.
+- ขั้นตอน 4.1 โปรเจกต์ Cypress: `package.json` และ `package-lock.json` ระบุ Cypress เวอร์ชัน `16.2.1`
+- ขั้นตอน 4.2 การตั้งค่า Cypress: การทดสอบ E2E ด้วย Chrome ใช้ viewport 1280 x 1600, timeout ของคำสั่ง 10 วินาที และเปิดการบันทึกวิดีโอ
+- ขั้นตอน 4.3 สเปกเว็บฟอร์ม: กรอก text, password, textarea, select, checkbox และ radio ส่งฟอร์ม แล้วตรวจสอบ `Received!`
+- ขั้นตอน 4.4 ขั้นตอน QP-01 ข้อ 1 และ 2: รอหัวข้อ QuickPizza เปิด Advanced และรอช่อง Advanced ทั้ง 4 ช่อง
+- ขั้นตอน 4.5 ขั้นตอน QP-01 ข้อ 3 ถึง 5: กรอก 600 ไม่เลือก Knife ติ๊ก vegetarian และกรอกชื่อกำหนดเอง จากนั้นตรวจสอบคำตอบและข้อความการให้คะแนนโดยยังไม่ล็อกอิน
+- ขั้นตอน 4.6 request oracle: `cy.intercept('POST', '/api/pizza')` รอ status 200 ตรวจสอบขีดจำกัดใน request เปรียบเทียบอุปกรณ์และ calories ใน response กับข้อมูลบนหน้า และเก็บอุปกรณ์ไว้ใช้ในขั้นตอน 7
+- ขั้นตอน 4.7 คำสั่งที่นำกลับมาใช้ซ้ำ: `cy.adminLogin('admin', 'admin')` รอ Svelte announcer ล้างค่าที่กรอกไว้ในทั้งสองช่อง ส่งฟอร์ม และตรวจสอบรายการแอดมิน
+- ขั้นตอน 4.8 หลักฐาน: บันทึกภาพหน้าจอหลังขั้นตอน 4, 5 และ 7 และเปิดวิดีโอสำหรับสเปกทั้งสอง การรันเต็มผ่าน 2 รอบ
+- ขั้นตอน 4.3 ความล้มเหลวจากชื่อหัวข้อที่ตั้งใจให้ผิด: Cypress timeout เพราะ assertion คาดหวัง `Web form` แต่หน้าเว็บแสดง `Web Form` จากนั้นแก้ assertion กลับก่อนรันสำเร็จ
+- ขั้นตอน 4.6 response จาก `/api/pizza` ที่ดักไว้: อุปกรณ์ `Pizza cutter`, 425 calories ต่อชิ้น, status 200 และ request มี `maxCaloriesPerSlice: 600`
+- ขั้นตอน 4.7 บรรทัดในรายการแอดมิน: `Lab Pizza 20261119-101743 (tool=Pizza cutter, ingredients_number=6) (newest)`
+- ขั้นตอน 4.8 รอบที่ 1: ผ่าน, 2 specs และ 2 tests ใช้เวลารวม 12 วินาที; พิซซ่า `Lab Pizza 20261119-100840`
+- ขั้นตอน 4.8 รอบที่ 2: ผ่าน, 2 specs และ 2 tests ใช้เวลารวม 12 วินาที; พิซซ่า `Lab Pizza 20261119-101743`
+- ขั้นตอน 4.9 (ตัวเลือกเสริม): ไม่ได้ทำ
 
 ## Part B
 
-1. The Max Calories per Slice input cannot be located reliably with `#floating_filled` because the page reuses that id on three number inputs. The test finds the label text and then the input next to that label. Giving this input a unique id would make the locator shorter, valid HTML and less likely to select the wrong field.
-2. Step 7 is a consistency oracle: it compares the tool shown in the admin list with the tool returned by the recommendation. It would catch a fault where QuickPizza stored or displayed a different tool from the one that the customer actually received.
-3. The test could check the `vegetarian` field in the intercepted `/api/pizza` response and verify that it is `true`. A UI-only check would need a visible vegetarian result or ingredient information on the page; the current page text alone is not enough to prove the property.
-4. Selenium IDE records commands quickly and waits with explicit commands such as `wait for element visible`; its saved project is easy to replay but its failure details are less convenient to review. Cypress uses automatic retrying assertions, `cy.intercept` and a custom command, so QP-01 is concise and its command log, screenshots and video make the run easy to inspect.
-5. I would choose Cypress for Project 2. Its assertions automatically retry while the page changes, and `cy.intercept` can verify both the request and the response while the UI test checks the page. The full-run screenshots and videos also provide direct evidence of what the user saw.
-6. For Part 1, the recorder's `css=.btn` is fragile because any new button sharing that class could be selected. `xpath=//button[@type='submit']` is more stable because it identifies the button's semantic type.
-7. For Part 4, QP-01 must stay one Cypress test because Cypress clears cookies before each test. If steps 6 and 7 were a second test, the browser could lose the cookie that pins it to the same QuickPizza server, and the second test would not reliably see the pizza created by steps 1 to 5.
+1. ช่อง Max Calories per Slice ไม่สามารถใช้ `#floating_filled` ค้นหาได้อย่างน่าเชื่อถือ เพราะหน้าเว็บใช้ id นี้ซ้ำกับช่องตัวเลข 3 ช่อง การทดสอบจึงค้นหาข้อความของ label แล้วเลือก input ที่อยู่ถัดจาก label หากกำหนด id ที่ไม่ซ้ำให้ช่องนี้ จะทำให้ locator สั้นลง เป็น HTML ที่ถูกต้อง และลดโอกาสเลือกช่องผิด
+2. ขั้นตอน 7 เป็น consistency oracle โดยเปรียบเทียบอุปกรณ์ในรายการแอดมินกับอุปกรณ์ที่คำแนะนำส่งกลับมา จึงตรวจพบกรณีที่ QuickPizza บันทึกหรือแสดงอุปกรณ์ต่างจากอุปกรณ์ที่ลูกค้าได้รับจริง
+3. การทดสอบสามารถตรวจสอบฟิลด์ `vegetarian` ใน response ของ `/api/pizza` ที่ดักไว้ และยืนยันว่าเป็น `true` ได้ หากตรวจเฉพาะ UI จะต้องมีผลลัพธ์หรือข้อมูลส่วนผสมที่แสดงว่าเป็น vegetarian แต่ข้อความบนหน้าปัจจุบันเพียงอย่างเดียวยังพิสูจน์คุณสมบัตินี้ไม่ได้
+4. Selenium IDE บันทึกคำสั่งได้รวดเร็วและรอด้วยคำสั่งที่ชัดเจน เช่น `wait for element visible` โปรเจกต์ที่บันทึกไว้จึงนำกลับมารันได้ง่าย แต่รายละเอียดความล้มเหลวตรวจสอบได้ไม่สะดวกเท่า Cypress ส่วน Cypress มี assertion ที่ retry อัตโนมัติ, `cy.intercept` และ custom command ทำให้ QP-01 กระชับ และ command log, ภาพหน้าจอ รวมถึงวิดีโอช่วยตรวจสอบการรันได้ง่าย
+5. ฉันเลือก Cypress สำหรับ Project 2 เพราะ assertion retry อัตโนมัติระหว่างหน้าเว็บเปลี่ยนแปลง และ `cy.intercept` ตรวจสอบได้ทั้ง request และ response ขณะที่การทดสอบ UI ตรวจสอบสิ่งที่แสดงบนหน้า นอกจากนี้ภาพหน้าจอและวิดีโอจากการรันเต็มยังเป็นหลักฐานโดยตรงของสิ่งที่ผู้ใช้เห็น
+6. สำหรับ Part 1 ตัวบันทึกใช้ `css=.btn` ซึ่งเปราะบาง เพราะปุ่มใหม่ที่ใช้ class เดียวกันอาจถูกเลือกแทน ปรับเป็น `xpath=//button[@type='submit']` ซึ่งเสถียรกว่าเพราะระบุชนิดของปุ่มโดยตรง
+7. สำหรับ Part 4 QP-01 ต้องอยู่ใน Cypress test เดียวกัน เพราะ Cypress ล้าง cookies ก่อนเริ่มแต่ละ test หากแยกขั้นตอน 6 และ 7 เป็นอีก test เบราว์เซอร์อาจสูญเสีย cookie ที่ทำให้ใช้ QuickPizza server เดิม และ test ที่สองจะไม่เห็นพิซซ่าที่สร้างจากขั้นตอน 1 ถึง 5 อย่างน่าเชื่อถือ
+
+รีโพสิตอรี่นี้มีเฉพาะโฟลเดอร์ Selenium IDE และ Cypress ที่เลือกทำเท่านั้น ไม่มี Selenium Java และ Robot Framework
