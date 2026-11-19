@@ -38,6 +38,7 @@ Tool parts that I chose: Part 1 - Selenium IDE and Part 4 - Cypress
 - Step 1.6, changes after recording: used full URLs, replaced the Submit target, added waits and assertions, removed the redundant option click, and added the complete QP-01 customer flow.
 - Step 1.6, pizza names: run 1 `Lab Pizza 20261119-093744`; run 2 `Lab Pizza 20261119-094118`.
 - Step 1.6, both runs: `Tests: 2 passed, 2 total`.
+- Step 1.6, QP-01 checks: the project waits for the advanced fields and recommendation, verifies the name, excludes Knife, checks calories, verifies the unauthenticated rating message, and keeps the timestamped pizza name for the admin step
 - Step 1.7, line that needs rewriting: the exported Java assertion that compares against the literal `vars.get("pizzaName").toString()`; it must use the variable value instead of a quoted expression.
 
 ## Part 4: Cypress
