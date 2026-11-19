@@ -30,6 +30,7 @@ Tool parts that I chose: Part 1 - Selenium IDE and Part 4 - Cypress
 
 - Firefox version and Node.js version: Firefox 159.0.1; Node.js v24.22.1
 - Step 1.1, Selenium IDE version: 3.17.4
+- Step 1.3, runner command: `npx --yes selenium-side-runner@4.0.13 ui-lab.side`; the web-form test completed successfully
 - Step 1.4, the failed check: `Actual value 'Received!' did not match 'Received' during assertText:id=message:Received`; `Tests: 1 failed, 1 passed, 2 total`.
 - Step 1.5, target chosen for Submit: `xpath=//button[@type='submit']`; the recorded `css=.btn` was fragile because a class can be shared by several buttons.
 - Step 1.6, changes after recording: used full URLs, replaced the Submit target, added waits and assertions, removed the redundant option click, and added the complete QP-01 customer flow.
