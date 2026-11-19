@@ -12,6 +12,7 @@ Tool parts that I chose: Part 1 - Selenium IDE and Part 4 - Cypress
 - Step 0.4, locator of Excluded tools: `css=select`
 - Step 0.4, locator of Must be vegetarian: `id=default-checkbox`
 - Step 0.4, locator of Custom Pizza Name: `css=input#pizza-name`
+- Step 0.4, locator note: `#floating_filled` is reused by three number inputs, so the calories input is located from its label instead of the duplicated id
 - Step 0.5, pizza name, tool and calories of the run by hand: `Lab Pizza 20261119-091205`, `Scissors`, 525 calories per slice
 
 | Step | Actual result | Pass or fail |
