@@ -44,6 +44,7 @@ Tool parts that I chose: Part 1 - Selenium IDE and Part 4 - Cypress
 ## Part 4: Cypress
 
 - Node.js: `v24.22.1`; npm: `11.19.1`; Cypress: `16.2.1`
+- Step 4.1, Cypress project: `package.json` and `package-lock.json` pin Cypress `16.2.1`
 - Step 4.3, intentional wrong-title failure: Cypress timed out while the title assertion expected `Web form` but the page showed `Web Form`; the assertion was restored before the successful run.
 - Step 4.6, intercepted `/api/pizza` response: tool `Pizza cutter`, 425 calories per slice, status 200, and the request carried `maxCaloriesPerSlice: 600`.
 - Step 4.7, admin-list line: `Lab Pizza 20261119-101743 (tool=Pizza cutter, ingredients_number=6) (newest)`.
