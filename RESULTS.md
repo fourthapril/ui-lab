@@ -7,6 +7,7 @@ Tool parts that I chose: Part 1 - Selenium IDE and Part 4 - Cypress
 - Step 0.1, Chrome version: Google Chrome 158.0.8127.36 (Official Build) (64-bit)
 - Step 0.2, ChromeDriver: downloaded outside the repository under `C:\drivers` so the driver binary is not committed with the lab
 - Step 0.3, ChromeDriver version: 158.0.8127.36, matching the Chrome major version
+- Step 0.3, environment variable: `CHROMEDRIVER` points to the driver outside the repository and is added to `PATH` only when running Selenium IDE
 - Step 0.4, locator of Pizza, Please!: `name=pizza-please`
 - Step 0.4, locator of Excluded tools: `css=select`
 - Step 0.4, locator of Must be vegetarian: `id=default-checkbox`
